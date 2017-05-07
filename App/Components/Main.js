@@ -5,7 +5,8 @@ import {
   StyleSheet,
   TextInput,
   TouchableHighlight,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from 'react-native';
 import api from '../Utils/api';
 import Dashboard from './Dashboard';
@@ -29,7 +30,14 @@ const styles = StyleSheet.create({
     padding: 4,
     marginRight: 5,
     fontSize: 23,
-    borderWidth: 1,
+    ...Platform.select({
+      ios: {
+        borderWidth: 1,
+      },
+      android: {
+        borderWidth: 0,
+      },
+    }),
     borderColor: 'white',
     borderRadius: 8,
     color: 'white'
